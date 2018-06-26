@@ -7,6 +7,7 @@ $(document).ready(function() {
 var userChoice;
 var wins = 0;
 var losses= 0;
+var timer = 0;
 
 var seinfeldQuestions = [{
     question: "The restaurant known as Monk's on the show is actually named what?",
