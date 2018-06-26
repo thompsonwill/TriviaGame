@@ -1,8 +1,11 @@
 $(document).ready(function() {
     //Hide questions until they are ready
+    $("#game1").hide();
     $("#game2").hide();
     $("#game3").hide();
     $("#game4").hide();
+    $("#userWins").hide();
+    $("#userLoss").hide();
 
 var userChoice;
 var wins = 0;
@@ -26,6 +29,31 @@ var seinfeldQuestions = [{
     choices: ["<input type='radio' name='option3' value='Apple' id='ans1'> Apple", "<input type='radio' name='option3' value='Orange' id='ans1'> Orange", "<input type='radio' name='option3' value='Banana' id='ans1'> Banana", "<input type='radio' name='option3' value='Tomato' id='ans1'> Tomato"],
     correctAns: "Tomato"
 }];
+
+$('#startGame').click(function() {
+    $("#game1").show();
+    $( "#startGame" ).prop( "disabled", true );
+
+    //Timer
+    var timeLeft = 30;
+    var timerId = setInterval(countdown, 1000);
+        function countdown() {
+            if (timeLeft == -1) {
+                clearTimeout(timerId);
+                console.log("Out of time");
+                $("#userWins").show();
+                $("#userLoss").show();
+                $("#timer").text("You are out of time");
+                $("#userWins").text("You have " + wins + " correct answers");
+                $("#userLoss").text("You have " + losses + " incorrect answers");
+                $("#triviaGame").hide();
+            } else {
+                $("#timer").text(timeLeft + " Seconds Remaining");
+                timeLeft--;
+            }
+        }
+        
+});
 
 
 //Question 1 - Display on DOM
