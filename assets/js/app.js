@@ -1,12 +1,4 @@
 $(document).ready(function() {
-    //Hide questions until they are ready
-    $("#game1").hide();
-    $("#game2").hide();
-    $("#game3").hide();
-    $("#game4").hide();
-    $("#userWins").hide();
-    $("#userLoss").hide();
-
 var userChoice;
 var wins = 0;
 var losses= 0;
@@ -28,9 +20,24 @@ var seinfeldQuestions = [{
     question: "What food was thrown at George at the end of the episode where the gang goes to the Hamptons?",
     choices: ["<input type='radio' name='option3' value='Apple' id='ans1'> Apple", "<input type='radio' name='option3' value='Orange' id='ans1'> Orange", "<input type='radio' name='option3' value='Banana' id='ans1'> Banana", "<input type='radio' name='option3' value='Tomato' id='ans1'> Tomato"],
     correctAns: "Tomato"
+}, {
+  question: "What is the color of the base of the Pez dispenser that makes Elaine laugh?",
+  choices: ["<input type='radio' name='option4' value='Red' id='ans1'> Red ", "<input type='radio' name='option4' value='Blue' id='ans1'> Blue", "<input type='radio' name='option4' value='Green' id='ans1'> Green ", "<input type='radio' name='option4' value='Purple' id='ans1'> Purple"],
+  correctAns: "Blue"
 }];
 
 var choicesArr;
+
+function initializeGame(){
+  //Hide questions until they are ready
+  $("#game1").hide();
+  $("#game2").hide();
+  $("#game3").hide();
+  $("#game4").hide();
+  $("#game5").hide();
+  $("#userWins").hide();
+  $("#userLoss").hide();
+}
 
 $('#startGame').click(function() {
     $("#game1").show();
@@ -85,11 +92,13 @@ function nextQuestion(hidden, showing, radioChoice, answerDiv, seinQuestion) {
       }
 }
 
+//Start the game
+initializeGame();
+
 //Get the answer and move on to the next question
 $('#nextQ').click(function() {
   nextQuestion("#game1", "#game2", 'input[name=option]:checked', '#ansDiv', seinfeldQuestions[0].correctAns);
  });
-
 
 //Question 2 - Display on DOM
 showQuestion("#question2", seinfeldQuestions[1].question, seinfeldQuestions[1].choices, "#ansDiv2");
@@ -100,8 +109,6 @@ showQuestion("#question2", seinfeldQuestions[1].question, seinfeldQuestions[1].c
 $('#nextQ1').click(function() {
   nextQuestion("#game2", "#game3", 'input[name=option1]:checked', '#ansDiv2', seinfeldQuestions[1].correctAns);
  });
-
-
 
 //Show question 3
  showQuestion("#question3", seinfeldQuestions[2].question, seinfeldQuestions[2].choices, "#ansDiv3");
@@ -121,6 +128,15 @@ $('#nextQ2').click(function() {
 $('#nextQ3').click(function() {
   nextQuestion("#game4", "#game5", 'input[name=option3]:checked', '#ansDiv4', seinfeldQuestions[3].correctAns);
  });
+
+ //Show question 4
+  showQuestion("#question5", seinfeldQuestions[4].question, seinfeldQuestions[4].choices, "#ansDiv5");
+
+
+ //Get the answer and move on to the next question
+ $('#nextQ4').click(function() {
+   nextQuestion("#game5", "#game6", 'input[name=option4]:checked', '#ansDiv5', seinfeldQuestions[4].correctAns);
+  });
 
 
 
