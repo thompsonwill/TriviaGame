@@ -30,6 +30,8 @@ var seinfeldQuestions = [{
     correctAns: "Tomato"
 }];
 
+var choicesArr;
+
 $('#startGame').click(function() {
     $("#game1").show();
     $( "#startGame" ).prop( "disabled", true );
@@ -56,14 +58,17 @@ $('#startGame').click(function() {
 });
 
 
-//Question 1 - Display on DOM
-$("#question1").text(seinfeldQuestions[0].question);
-
-//Radio Buttons Question 1 - Display on DOM
-var choicesArr = seinfeldQuestions[0].choices;
-for (let i = 0; i < choicesArr.length; i++) {
-    $("#ansDiv").append(choicesArr[i]);
+//Create a function to list the questions & answers
+function showQuestion(divId, questionList, questionChoices, arrayDiv){
+    $(divId).text(questionList);
+    choicesArr = questionChoices;
+    for (let i = 0; i < choicesArr.length; i++) {
+    $(arrayDiv).append(choicesArr[i]);
 };
+}
+
+
+showQuestion("#question1", seinfeldQuestions[0].question, seinfeldQuestions[0].choices, "#ansDiv");
 
 //Get the answer and move on to the next question
 $('#nextQ').click(function() {
@@ -80,16 +85,10 @@ $('#nextQ').click(function() {
  });
 
 
-
-
 //Question 2 - Display on DOM
-$("#question2").text(seinfeldQuestions[1].question);
+showQuestion("#question2", seinfeldQuestions[1].question, seinfeldQuestions[1].choices, "#ansDiv2");
 
-//Radio Buttons Question 2 - Display on DOM
-choicesArr = seinfeldQuestions[1].choices;
-for (let i = 0; i < choicesArr.length; i++) {
-    $("#ansDiv2").append(choicesArr[i]);
-};
+
 
 //Get the answer and move on to the next question
 $('#nextQ1').click(function() {
@@ -107,16 +106,9 @@ $('#nextQ1').click(function() {
 
 
 
+//Show question 3
+ showQuestion("#question3", seinfeldQuestions[2].question, seinfeldQuestions[2].choices, "#ansDiv3");
 
-
- //Question 3 - Display on DOM
-$("#question3").text(seinfeldQuestions[2].question);
-
-//Radio Buttons Question 3 - Display on DOM
-choicesArr = seinfeldQuestions[2].choices;
-for (let i = 0; i < choicesArr.length; i++) {
-    $("#ansDiv3").append(choicesArr[i]);
-};
 
 //Get the answer and move on to the next question
 $('#nextQ2').click(function() {
@@ -133,16 +125,9 @@ $('#nextQ2').click(function() {
  });
 
 
+//Show question 4
+ showQuestion("#question4", seinfeldQuestions[3].question, seinfeldQuestions[3].choices, "#ansDiv4");
 
-
-  //Question 4 - Display on DOM
-$("#question4").text(seinfeldQuestions[3].question);
-
-//Radio Buttons Question 4 - Display on DOM
-choicesArr = seinfeldQuestions[3].choices;
-for (let i = 0; i < choicesArr.length; i++) {
-    $("#ansDiv4").append(choicesArr[i]);
-};
 
 //Get the answer and move on to the next question
 $('#nextQ3').click(function() {
