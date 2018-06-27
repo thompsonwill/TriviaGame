@@ -18,7 +18,7 @@ var seinfeldQuestions = [{
     correctAns: "toms"
 }, {
     question: "What are the names of George's horses at his fictitious home in the Hamptons?",
-    choices: ["<input type='radio' name='option1' value='Thomas and Scamer' id='ans1'> Thomas and Scamper", "<input type='radio' name='option1' value='Seabisquick and Billy the Kid' id='ans1'> Seabisquick and Billy the Kid", "<input type='radio' name='option1' value='Snoopy and Prickly Pete' id='ans1'> Snoopy and Prickly Pete", "<input type='radio' name='option1' value='Runner & Jumper' id='ans1'> Runner & Jumper"],
+    choices: ["<input type='radio' name='option1' value='Thomas and Scamper' id='ans1'> Thomas and Scamper ", "<input type='radio' name='option1' value='Seabisquick and Billy the Kid' id='ans1'> Seabisquick and Billy the Kid ", "<input type='radio' name='option1' value='Snoopy and Prickly Pete' id='ans1'> Snoopy and Prickly Pete ", "<input type='radio' name='option1' value='Runner & Jumper' id='ans1'> Runner & Jumper "],
     correctAns: "Snoopy and Prickly Pete"
 }, {
     question: "Other than Jerry, who uttered the words 'Hello Newman'?",
@@ -54,7 +54,7 @@ $('#startGame').click(function() {
                 timeLeft--;
             }
         }
-        
+
 });
 
 
@@ -70,18 +70,24 @@ function showQuestion(divId, questionList, questionChoices, arrayDiv){
 
 showQuestion("#question1", seinfeldQuestions[0].question, seinfeldQuestions[0].choices, "#ansDiv");
 
+
+
+function nextQuestion(hidden, showing, radioChoice, answerDiv, seinQuestion) {
+  $(hidden).hide();
+  $(showing).show();
+  userChoice = ($(radioChoice, answerDiv).val());
+      if(userChoice != seinQuestion) {
+          losses++;
+          console.log("You are incorrect. " + losses);
+      } else {
+          wins++;
+          console.log("You are correct. " + wins);
+      }
+}
+
 //Get the answer and move on to the next question
 $('#nextQ').click(function() {
-    $("#game1").hide();
-    $("#game2").show();
-    userChoice = ($('input[name=option]:checked', '#ansDiv').val());
-        if(userChoice != seinfeldQuestions[0].correctAns) {
-            losses++;
-            console.log("You are incorrect. " + losses);
-        } else {
-            wins++;
-            console.log("You are correct. " + wins);
-        }
+  nextQuestion("#game1", "#game2", 'input[name=option]:checked', '#ansDiv', seinfeldQuestions[0].correctAns);
  });
 
 
@@ -92,16 +98,7 @@ showQuestion("#question2", seinfeldQuestions[1].question, seinfeldQuestions[1].c
 
 //Get the answer and move on to the next question
 $('#nextQ1').click(function() {
-    $("#game2").hide();
-    $("#game3").show();
-    userChoice = ($('input[name=option1]:checked', '#ansDiv2').val());
-        if(userChoice != seinfeldQuestions[1].correctAns) {
-            losses++;
-            console.log("You are incorrect. " + losses);
-        } else {
-            wins++;
-            console.log("You are correct. " + wins);
-        }
+  nextQuestion("#game2", "#game3", 'input[name=option1]:checked', '#ansDiv2', seinfeldQuestions[1].correctAns);
  });
 
 
@@ -112,16 +109,7 @@ $('#nextQ1').click(function() {
 
 //Get the answer and move on to the next question
 $('#nextQ2').click(function() {
-    $("#game3").hide();
-    $("#game4").show();
-    userChoice = ($('input[name=option2]:checked', '#ansDiv3').val());
-        if(userChoice != seinfeldQuestions[2].correctAns) {
-            losses++;
-            console.log("You are incorrect. " + losses);
-        } else {
-            wins++;
-            console.log("You are correct. " + wins);
-        }
+  nextQuestion("#game3", "#game4", 'input[name=option2]:checked', '#ansDiv3', seinfeldQuestions[2].correctAns);
  });
 
 
@@ -131,16 +119,7 @@ $('#nextQ2').click(function() {
 
 //Get the answer and move on to the next question
 $('#nextQ3').click(function() {
-    $("#game4").hide();
-    $("#game5").show();
-    userChoice = ($('input[name=option3]:checked', '#ansDiv4').val());
-        if(userChoice != seinfeldQuestions[3].correctAns) {
-            losses++;
-            console.log("You are incorrect. " + losses);
-        } else {
-            wins++;
-            console.log("You are correct. " + wins);
-        }
+  nextQuestion("#game4", "#game5", 'input[name=option3]:checked', '#ansDiv4', seinfeldQuestions[3].correctAns);
  });
 
 
