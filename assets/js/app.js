@@ -75,7 +75,7 @@ function showQuestion(divId, questionList, questionChoices, arrayDiv){
 }
 
 
-showQuestion("#question1", seinfeldQuestions[0].question, seinfeldQuestions[0].choices, "#ansDiv");
+
 
 
 
@@ -94,6 +94,9 @@ function nextQuestion(hidden, showing, radioChoice, answerDiv, seinQuestion) {
 
 //Start the game
 initializeGame();
+
+//Show questoin 1
+showQuestion("#question1", seinfeldQuestions[0].question, seinfeldQuestions[0].choices, "#ansDiv");
 
 //Get the answer and move on to the next question
 $('#nextQ').click(function() {
