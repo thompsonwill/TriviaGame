@@ -13,10 +13,14 @@
 </head>
 
 <body>
+  <center>
     <div class="jumbotron jumbotron-fluid">
+      <img src="assets/images/trivia.jpg" alt="kramer" height="213" width="468.5" id="triviaPic">
+      <audio id="audio" src="assets/sounds/bass.mp3"></audio>
         <h1 class="display-4">Welcome to Seinfeld Trivia!</h1>
+        <img src="assets/images/kramer.jpg" alt="kramer" height="449" width="296">
         <p class="lead">This is a simple trivia game. Answer the questions correctly before the timer runs out!</p>
-        <button type="button" class="btn btn-danger" id="startGame">Start the game!</button>
+        <a href="#triviaGame"><button type="button" class="btn btn-danger" id="startGame">Start the game!</button></a>
         <h2 id="timer">30 Seconds Remaining</h2>
         <br>
         <div id="scores">
@@ -24,13 +28,12 @@
             <p id="userLoss"></p>
         </div>
       </div>
-
+</center>
     <div id="triviaGame">
     <div id="game1">
         <!-- Question 1 -->
         <h2 id="question1"></h2>
         <form id="ansDiv">
-
         </form>
         <br>
         <button type="button" class="btn btn-primary" id="nextQ">Next Question</button>
@@ -40,7 +43,6 @@
     <div id="game2">
         <h2 id="question2"></h2>
         <form id="ansDiv2">
-        <br>
         </form><br>
         <button type="button" class="btn btn-primary" id="nextQ1">Next Question</button>
     </div>
@@ -49,7 +51,6 @@
     <div id="game3">
         <h2 id="question3"></h2>
         <form id="ansDiv3">
-        <br>
         </form><br>
         <button type="button" class="btn btn-primary" id="nextQ2">Next Question</button>
     </div>
@@ -58,7 +59,6 @@
     <div id="game4">
             <h2 id="question4"></h2>
             <form id="ansDiv4">
-            <br>
             </form><br>
             <button type="button" class="btn btn-primary" id="nextQ3">Next Question</button>
         </div>
@@ -67,9 +67,16 @@
         <div id="game5">
                 <h2 id="question5"></h2>
                 <form id="ansDiv5">
-                <br>
                 </form><br>
                 <button type="button" class="btn btn-primary" id="nextQ4">Next Question</button>
+            </div>
+
+        <!-- Question 6 -->
+        <div id="game6">
+                <h2 id="question6"></h2>
+                <form id="ansDiv6">
+                </form><br>
+                <button type="button" class="btn btn-primary" id="nextQ5">Next Question</button>
             </div>
 
 

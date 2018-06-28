@@ -24,6 +24,10 @@ var seinfeldQuestions = [{
   question: "What is the color of the base of the Pez dispenser that makes Elaine laugh?",
   choices: ["<input type='radio' name='option4' value='Red' id='ans1'> Red ", "<input type='radio' name='option4' value='Blue' id='ans1'> Blue", "<input type='radio' name='option4' value='Green' id='ans1'> Green ", "<input type='radio' name='option4' value='Purple' id='ans1'> Purple"],
   correctAns: "Blue"
+}, {
+  question: "What are the names of Jerry’s parents?",
+  choices: ["<input type='radio' name='option5' value='Jack and Susan' id='ans1'> Jack and Susan ", "<input type='radio' name='option5' value='Harold and Maude' id='ans1'> Harold and Maude ", "<input type='radio' name='option5' value='Morty and Helen' id='ans1'> Morty and Helen ", "<input type='radio' name='option5' value='Ben and Sherly' id='ans1'> Ben and Sherly "],
+  correctAns: "Morty and Helen"
 }];
 
 var choicesArr;
@@ -35,6 +39,7 @@ function initializeGame(){
   $("#game3").hide();
   $("#game4").hide();
   $("#game5").hide();
+  $("#game6").hide();
   $("#userWins").hide();
   $("#userLoss").hide();
 }
@@ -42,6 +47,9 @@ function initializeGame(){
 $('#startGame').click(function() {
     $("#game1").show();
     $( "#startGame" ).prop( "disabled", true );
+
+    //Play sound
+    document.getElementById('audio').play();
 
     //Timer
     var timeLeft = 30;
@@ -74,11 +82,6 @@ function showQuestion(divId, questionList, questionChoices, arrayDiv){
 };
 }
 
-
-
-
-
-
 function nextQuestion(hidden, showing, radioChoice, answerDiv, seinQuestion) {
   $(hidden).hide();
   $(showing).show();
@@ -107,7 +110,6 @@ $('#nextQ').click(function() {
 showQuestion("#question2", seinfeldQuestions[1].question, seinfeldQuestions[1].choices, "#ansDiv2");
 
 
-
 //Get the answer and move on to the next question
 $('#nextQ1').click(function() {
   nextQuestion("#game2", "#game3", 'input[name=option1]:checked', '#ansDiv2', seinfeldQuestions[1].correctAns);
@@ -122,10 +124,8 @@ $('#nextQ2').click(function() {
   nextQuestion("#game3", "#game4", 'input[name=option2]:checked', '#ansDiv3', seinfeldQuestions[2].correctAns);
  });
 
-
 //Show question 4
  showQuestion("#question4", seinfeldQuestions[3].question, seinfeldQuestions[3].choices, "#ansDiv4");
-
 
 //Get the answer and move on to the next question
 $('#nextQ3').click(function() {
@@ -140,6 +140,15 @@ $('#nextQ3').click(function() {
  $('#nextQ4').click(function() {
    nextQuestion("#game5", "#game6", 'input[name=option4]:checked', '#ansDiv5', seinfeldQuestions[4].correctAns);
   });
+
+  //Show question 5
+   showQuestion("#question6", seinfeldQuestions[5].question, seinfeldQuestions[5].choices, "#ansDiv6");
+
+  //Get the answer and move on to the next question
+  $('#nextQ5').click(function() {
+    nextQuestion("#game6", "#game7", 'input[name=option5]:checked', '#ansDiv6', seinfeldQuestions[5].correctAns);
+   });
+
 
 
 
