@@ -52,7 +52,7 @@ $('#startGame').click(function() {
     document.getElementById('audio').play();
 
     //Timer
-    var timeLeft = 30;
+    var timeLeft = 45;
     var timerId = setInterval(countdown, 1000);
         function countdown() {
             if (timeLeft == -1) {
